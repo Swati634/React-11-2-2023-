@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState, useContext } from "react";
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 const Loading = 0;
 const SignedIn = 1;
@@ -17,12 +18,25 @@ export const AuthContext = createContext(defaultState);
 
 export const AuthIsSignedIn = ({ children }) => {
     const { authStatus } = useContext(AuthContext)
+    // const navigate = useNavigate()
+    // return <>
+    //     {
+    //         authStatus === AuthStatus.SignedIn ?
+    //             children : null
+    //     }
+    // </>
     return <>{authStatus === AuthStatus.SignedIn ? children : null}</>
 }
 
 export const AuthIsNotSignedIn = ({ children }) => {
     const { authStatus } = useContext(AuthContext)
-
+    // // const navigate = useNavigate()
+    // return <>
+    //     {
+    //         authStatus === AuthStatus.SignedIn ?
+    //             children : null
+    //     }
+    // </>
     return <>{authStatus === AuthStatus.SignedOut ? children : null}</>
 }
 export const AuthProvider = ({ children }) => {

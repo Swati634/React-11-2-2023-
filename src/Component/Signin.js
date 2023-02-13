@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from "react";
+import Cookies from "js-cookie";
+import React, { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../Contexts.js/AuthCon";
 
 const Signin = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [psw, setPassword] = useState("");
-    const getCookie = localStorage.getItem("token");
-    useEffect(() => {
-        if (getCookie) {
-            navigate("/");
-        }
-    }, [getCookie]);
+
+    const { authStatus, setAuthStatus } = useContext(AuthContext)
+    console.log(authStatus, 'hello-------')
 
     const IsValidate = () => {
         let isproceed = true;
@@ -46,13 +45,14 @@ const Signin = () => {
                 body: JSON.stringify({ email: email, psw: psw }),
             };
             let result = await fetch(
-                "https://crudcrud.com/api/7b0ab73bbfdf469596ae57cd104f9058/data",
+                "https://crudcrud.com/api/6a31f3974bb44907b4bc0d57de3fa047/data",
                 requestOptions
             );
             result = await result.json(items);
-            localStorage.setItem("token", email);
             setEmail("");
             setPassword("");
+            setAuthStatus(1)
+            Cookies.set('accessToken', 'hello-signin')
             navigate("/");
         }
     }
@@ -60,7 +60,6 @@ const Signin = () => {
     const signupFun = () => {
         navigate("/signup");
     };
-
     return (
         <>
             <div className="container" id="main">
