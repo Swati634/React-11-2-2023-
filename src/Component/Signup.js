@@ -61,7 +61,7 @@ const Signup = () => {
                 }),
             };
             let result = await fetch(
-                "https://crudcrud.com/api/6a31f3974bb44907b4bc0d57de3fa047/data",
+                "https://crudcrud.com/api/fa9e07defdee49adaee876c94b581741/data",
                 requestOptions
             );
             result = await result.json(items);

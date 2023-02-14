@@ -8,7 +8,7 @@ import { AuthContext } from "../Contexts.js/AuthCon";
 
 const Read = () => {
     const navigate = useNavigate();
-    const url = `https://crudcrud.com/api/6a31f3974bb44907b4bc0d57de3fa047/data`;
+    const url = `https://crudcrud.com/api/fa9e07defdee49adaee876c94b581741/data`;
     const [APIData, setAPIData] = useState([]);
     const [createForm, setForm] = useState(false);
     const [isEdit, setEdit] = useState(false);
@@ -29,7 +29,7 @@ const Read = () => {
     const onDelete = (id) => {
         axios
             .delete(
-                `https://crudcrud.com/api/6a31f3974bb44907b4bc0d57de3fa047/data/${id}`
+                `https://crudcrud.com/api/fa9e07defdee49adaee876c94b581741/data/${id}`
             )
             .then(() => {
                 getData();

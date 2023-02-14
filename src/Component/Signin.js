@@ -45,18 +45,17 @@ const Signin = () => {
                 body: JSON.stringify({ email: email, psw: psw }),
             };
             let result = await fetch(
-                "https://crudcrud.com/api/6a31f3974bb44907b4bc0d57de3fa047/data",
+                "https://crudcrud.com/api/fa9e07defdee49adaee876c94b581741/data",
                 requestOptions
             );
             result = await result.json(items);
             setEmail("");
             setPassword("");
             setAuthStatus(1)
-            Cookies.set('accessToken', 'hello-signin')
+            Cookies.set('accessToken', 'hkjkjhkj')
             navigate("/");
         }
     }
-
     const signupFun = () => {
         navigate("/signup");
     };
