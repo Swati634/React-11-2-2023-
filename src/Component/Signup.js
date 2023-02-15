@@ -1,5 +1,5 @@
 import Cookies from "js-cookie";
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Contexts.js/AuthCon";
 
@@ -11,7 +11,7 @@ const Signup = () => {
     const [cpsw, setCpsw] = useState("");
 
     const { authStatus, setAuthStatus } = useContext(AuthContext)
-    console.log(authStatus, '-------signup')
+    console.log(setAuthStatus, 'signup')
 
     const IsValidate = () => {
         let isproceed = true;
@@ -61,7 +61,7 @@ const Signup = () => {
                 }),
             };
             let result = await fetch(
-                "https://crudcrud.com/api/fa9e07defdee49adaee876c94b581741/data",
+                "https://crudcrud.com/api/a4f35f3dbc8745a08366c21d80e0d2db/data",
                 requestOptions
             );
             result = await result.json(items);
@@ -70,7 +70,8 @@ const Signup = () => {
             setPassword("");
             setCpsw("");
             setAuthStatus(1)
-            Cookies.set('accessToken', 'hkjkjhkj')
+            console.log(setAuthStatus, 'setAuthStatus1')
+            Cookies.set('accessToken', 'signup')
             navigate("/");
         }
     }
@@ -134,7 +135,7 @@ const Signup = () => {
                     />
                 </div>
                 <br />
-                <div className="signin-btn">
+                <div className="signup-btn">
                     <button onClick={() => signupFunc()}>Sign Up</button>
                 </div>
             </div>

@@ -8,10 +8,10 @@ import AuthProvider from "./Contexts.js/AuthCon";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <AuthProvider>
-      <App />
-    </AuthProvider>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <AuthProvider>
+    <App />
+  </AuthProvider>
+  // </React.StrictMode>
 );
 reportWebVitals();

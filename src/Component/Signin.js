@@ -1,5 +1,5 @@
 import Cookies from "js-cookie";
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Contexts.js/AuthCon";
 
@@ -7,9 +7,7 @@ const Signin = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [psw, setPassword] = useState("");
-
     const { authStatus, setAuthStatus } = useContext(AuthContext)
-    console.log(authStatus, 'hello-------')
 
     const IsValidate = () => {
         let isproceed = true;
@@ -45,14 +43,14 @@ const Signin = () => {
                 body: JSON.stringify({ email: email, psw: psw }),
             };
             let result = await fetch(
-                "https://crudcrud.com/api/fa9e07defdee49adaee876c94b581741/data",
+                "https://crudcrud.com/api/a4f35f3dbc8745a08366c21d80e0d2db/data",
                 requestOptions
             );
             result = await result.json(items);
             setEmail("");
             setPassword("");
             setAuthStatus(1)
-            Cookies.set('accessToken', 'hkjkjhkj')
+            Cookies.set('accessToken', 'signin')
             navigate("/");
         }
     }
