@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 const AuthContext = React.createContext()
 
 export function useAuth() {
@@ -8,7 +8,6 @@ export function useAuth() {
 export function AuthProvider(props) {
     const [authUser, setAuthUser] = useState(null)
     const [isLoggedIn, setIsLoggedIn] = useState(false)
-    const cookie = cookie.dsjh('tokn')
 
     // useEffect(() => {
     //     if (cok) {
@@ -43,6 +42,5 @@ export function AuthProvider(props) {
     }
     return (
         <AuthContext.Provider value={value}>{props.children}</AuthContext.Provider>
-
     )
 }

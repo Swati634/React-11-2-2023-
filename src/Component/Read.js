@@ -1,24 +1,20 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
+import React, { useEffect, useState, useContext } from "react";
 import { Table } from "semantic-ui-react";
 import Create from "./Create";
+import { AuthContext } from "../Contexts.js/AuthCon";
 
 const Read = () => {
-    const navigate = useNavigate();
-    const url = `https://crudcrud.com/api/7b0ab73bbfdf469596ae57cd104f9058/data`;
+    const url = `https://crudcrud.com/api/a4f35f3dbc8745a08366c21d80e0d2db/data`;
     const [APIData, setAPIData] = useState([]);
     const [createForm, setForm] = useState(false);
     const [isEdit, setEdit] = useState(false);
     const [editData, seteditData] = useState(null);
     const auth = useContext(AuthContext)
 
-    const getCookie = localStorage.getItem("token");
-    useEffect(() => {
-        if (!getCookie) {
-            navigate("/signin");
-        }
-    }, [getCookie]);
+    Cookies.get('accessToken', 'hello-get')
+    const { authStatus, setAuthStatus } = useContext(AuthContext)
 
     const getData = () => {
         axios.get(url).then((getData) => {
@@ -30,7 +26,7 @@ const Read = () => {
     const onDelete = (id) => {
         axios
             .delete(
-                `https://crudcrud.com/api/7b0ab73bbfdf469596ae57cd104f9058/data/${id}`
+                `https://crudcrud.com/api/a4f35f3dbc8745a08366c21d80e0d2db/data/${id}`
             )
             .then(() => {
                 getData();
@@ -56,9 +52,10 @@ const Read = () => {
         seteditData(null);
         setForm(false);
     };
-    const logoutfun = () => {
-        localStorage.removeItem("token");
-        navigate("/Signin");
+    const logoutfun = (e) => {
+        Cookies.remove('accessToken', 'hello-remove')
+        window.location.href = `${window.location.origin}/signin`;
+
     };
 
     return (
